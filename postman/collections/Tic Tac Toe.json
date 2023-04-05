@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "d53f560c-75d5-452c-ab05-6e15c13e9a1d",
+		"name": "Tic Tac Toe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "26761063-d53f560c-75d5-452c-ab05-6e15c13e9a1d"
+	},
+	"item": [
+		{
+			"name": "See API",
+			"id": "03ca89f8-6177-4600-8509-a33ef01eeba8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "962b43699ecfed02ee31",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "962b43699ecfed02ee31",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "1134",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://www.notexponential.com/aip2pgaming/api/index.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"notexponential",
+						"com"
+					],
+					"path": [
+						"aip2pgaming",
+						"api",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "x-api-key",
+							"value": "962b43699ecfed02ee31",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "userid",
+							"value": "1134",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Team",
+			"id": "1c2454e3-0674-40da-8dab-0e7a83e3a9ea",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "962b43699ecfed02ee31",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "1134",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type",
+							"value": "team",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "$name",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.notexponential.com/aip2pgaming/api/index.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"notexponential",
+						"com"
+					],
+					"path": [
+						"aip2pgaming",
+						"api",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Team Member",
+			"id": "0fda7d96-4b48-47be-a234-e8f046ea1a6a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "962b43699ecfed02ee31",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "1134",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type",
+							"value": "member",
+							"type": "text"
+						},
+						{
+							"key": "teamID",
+							"value": "TeamMax",
+							"type": "text"
+						},
+						{
+							"key": "userID",
+							"value": "1134",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.notexponential.com/aip2pgaming/api/index.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"notexponential",
+						"com"
+					],
+					"path": [
+						"aip2pgaming",
+						"api",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
