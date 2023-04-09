@@ -29,27 +29,27 @@ public class Requests {
 
 		
 		// testing
-		//System.out.println(get_board_map(3794));
+		// System.out.println(get_board_map(3794));
 
 		// testing
-		//System.out.println(get_board_string(3794));
+		// System.out.println(get_board_string(3794));
 
 		// testing
 		// System.out.println(get_team_members(1343));
 
 		// testing
-		//System.out.println(get_teams());
+		// System.out.println(get_teams());
 
 
 
 		// testing get_moves(int gameId, int count)
-		//System.out.println(get_moves(3839, 1));
+		// System.out.println(get_moves(3839, 1));
 
 		// testing get_moves(int gameId, int count)
 		//System.out.println(get_moves(3839, 2));
 
 		// testing get_moves(int gameId)
-		//System.out.println(get_moves(3839));
+		// System.out.println(get_moves(3839));
 
 		
 		////////////////////////
@@ -57,13 +57,13 @@ public class Requests {
 		////////////////////////
 		
 		// testing add_team_member(int teamId)
-		// add_team_member(1359);
+		 // add_team_member(1360);
 
 		// testing create_game(int teamId1, int teamId2, int boardSize, int target)
 		// create_game(1355, 1354, 5, 3);
 		
 		// testing create_team(String name)
-		//create_team("TeamConnor");
+		// create_team("TeamConnor");
 		
 		// testing make_move(int gameId, int teamId, int x, int y)
 		// make_move(3794, 1356, 3, 9);
@@ -279,7 +279,7 @@ public class Requests {
 	    		{
 	    			String moveId = jsonNode.get("moveId").asText();
 
-	    			System.out.println("Team " + teamId + "'s Move of {" + x + ", " + y + " was successful in game " + gameId);
+	    			System.out.println("Team " + teamId + "'s Move of {" + x + ", " + y + "} was successful in game " + gameId);
 	    			return 0;
 	    		}
 	    		else

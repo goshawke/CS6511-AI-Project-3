@@ -22,6 +22,7 @@ public class Move
 		this.moveX = moveX;
 		this.moveY = moveY;
 		this.symbol = symbol;
+		this.move = move;
 	}
 
 	public String getMove() {
