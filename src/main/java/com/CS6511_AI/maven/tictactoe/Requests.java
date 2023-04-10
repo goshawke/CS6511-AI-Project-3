@@ -64,7 +64,7 @@ public class Requests {
 
 		
 		// testing
-		// System.out.println(get_board_map(3794));
+		System.out.println(get_board_map(3901));
 
 		// testing
 		// System.out.println(get_board_string(3794));
@@ -201,7 +201,7 @@ public class Requests {
 			String gameId = jsonNode.get("gameId").asText();
 
 			System.out.println("Game " + gameId + " successfully created between teams: " + teamId1 + " and " + teamId2);
-			return 0;
+			return Integer.parseInt(gameId);
 		}
 		else
 		{
@@ -363,9 +363,20 @@ public class Requests {
 			String output = jsonNode.get("output").asText();
 			int target = jsonNode.get("target").asInt();
 
-			// only returning the board map
-			// Format: "{"4,4":"O","4,3":"X","3,3":"O","3,4":"X","5,4":"O"}"
-			return output;
+			if(output.contains("{"))
+			{
+				// only returning the board map
+				// Format: "{"4,4":"O","4,3":"X","3,3":"O","3,4":"X","5,4":"O"}"
+				System.out.println("Game is active, board is not empty");
+				return output;
+			}
+			else
+			{
+
+				System.out.println("Game is active, but board is empty");
+				return output;
+			}
+			
 		}
 		else
 		{
