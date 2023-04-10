@@ -12,6 +12,42 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // for all method calls, userId has default value of "1134"
+/*
+ * POST Methods
+
+Static int create_team(String name)
+	Return int teamId if “OK”
+	Return -1 if “Fail” and Print error message to console
+Static Int add_team_member(int teamId)
+	Returns 0 and prints message if “OK”
+	Returns -1 if “Fail” and Print error message to console
+Static Int create_game(int teamId1, int teamId2, int boardSize, int target)
+	Returns int gameId if “OK”
+	Return -1 if “Fail” and Print error message to console
+Static int make_move(int gameID, int teamId, int x, int y)
+	Returns int moveID if “OK”
+	Returns -1 if “Fail” and Print error message to console
+
+GET Methods
+
+Static List <Move> get_moves(int gameId, int count=1)
+	If “OK”, Return list of Move objects
+	Return null if no moves and print to console
+Static List <Map<String,String>> get_teams()
+	Returns a list of String key-value pairs if “OK”
+	Return null if “Fail”
+Static List <String> get_team_members(int teamId)
+	Return list of StringuserIds of team members if “OK”
+	Return -1, if team is empty
+Static String get_board_string(int gameId)
+	Return String board_string if “OK”
+	Return -1 if “Fail” and print to console
+Static String get_board_map(int gameId)
+	Return board map in format ("{\"4,4\":\"O\",\"4,3\":\"X\",\"3,3\":\"O\",\"3,4\":\"X\",\"5,4\":\"O\"}") if “OK”
+	Return -1 if “FAIL”
+
+ * 
+ */
 
 public class Requests {
 
@@ -28,7 +64,7 @@ public class Requests {
 
 		
 		// testing
-		 System.out.println(get_board_map(3794));
+		// System.out.println(get_board_map(3794));
 
 		// testing
 		// System.out.println(get_board_string(3794));
