@@ -64,11 +64,29 @@ public class Requests {
 
 		
 		// testing
-		System.out.println(get_board_map(3901));
+		// System.out.println(get_board_map(3901));
 
 		// testing
-		// System.out.println(get_board_string(3794));
+		char[][] board =  new char[12][12];
+		String string_board = get_board_string(3794);
+		String[] lines = string_board.split("\n");
+		// System.out.println(string_board);
+		for (int i = 0; i < 12; i++) {
+			for (int j = 0; j < 12; j++) {
+				board[i][j] = lines[i].charAt(j);
+			}
+		}
+		
+		// Print the resulting board
+		for (int i = 0; i < 12; i++) {
+			for (int j = 0; j < 12; j++) {
+				System.out.print(board[i][j]);
+			}
+			System.out.println();
+		}
 
+		int[] move = evaluate(board, 4, 'X');
+		System.out.print("Next Move: "+ move[0] + "," + move[1]);
 		// testing
 		// System.out.println(get_team_members(1343));
 
@@ -105,6 +123,189 @@ public class Requests {
 
 	} // main
 
+	public static int[] evaluate(char[][] board, int target, char player) {
+		// Initialize best score and best move
+		int bestScore = Integer.MIN_VALUE;
+		int[] bestMove = {-1, -1};
+		// Evaluate all possible moves
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[0].length; j++) {
+				if (board[i][j] == '-') {
+					// Make the move
+					board[i][j] = player;
+					
+					// Evaluate the move
+					int score = score(board, target, player);
+					
+					// Update the best score and best move
+					if (score > bestScore) {
+						bestScore = score;
+						bestMove[0] = i;
+						bestMove[1] = j;
+					}
+					
+					// Undo the move
+					board[i][j] = ' ';
+				}
+			}
+		}
+		
+		return bestMove;
+	}
+
+	public static int score(char[][] board, int target, char player) {
+		int numRows = board.length;
+		int numCols = board[0].length;
+		int playerCount = 0;
+		int opponentCount = 0;
+		int emptyCount = 0;
+
+		// Check rows
+		for (int row = 0; row < numRows; row++) {
+			int count = 0;
+			for (int col = 0; col < numCols; col++) {
+				if (board[row][col] == player) {
+					count++;
+				} else if (board[row][col] != '-') {
+					count = 0;
+					break;
+				}
+			}
+			if (count == target) {
+				playerCount++;
+			} else if (count > 0 && count < target) {
+				emptyCount++;
+			} else if (count == 0) {
+				count = 0;
+				for (int col = 0; col < numCols; col++) {
+					if (board[row][col] != player && board[row][col] != '-') {
+						count++;
+					} else if (board[row][col] == player) {
+						count = 0;
+						break;
+					}
+				}
+				if (count == target) {
+					opponentCount++;
+				} else if (count > 0 && count < target) {
+					emptyCount++;
+				}
+			}
+		}
+
+		// Check columns
+		for (int col = 0; col < numCols; col++) {
+			int count = 0;
+			for (int row = 0; row < numRows; row++) {
+				if (board[row][col] == player) {
+					count++;
+				} else if (board[row][col] != '-') {
+					count = 0;
+					break;
+				}
+			}
+			if (count == target) {
+				playerCount++;
+			} else if (count > 0 && count < target) {
+				emptyCount++;
+			} else if (count == 0) {
+				count = 0;
+				for (int row = 0; row < numRows; row++) {
+					if (board[row][col] != player && board[row][col] != '-') {
+						count++;
+					} else if (board[row][col] == player) {
+						count = 0;
+						break;
+					}
+				}
+				if (count == target) {
+					opponentCount++;
+				} else if (count > 0 && count < target) {
+					emptyCount++;
+				}
+			}
+		}
+
+		// Check diagonals
+    	// Top-left to bottom-right diagonal
+		for (int i = 0; i <= numRows - target; i++) {
+			for (int j = 0; j <= numCols - target; j++) {
+				int count = 0;
+				for (int k = 0; k < target; k++) {
+					if (board[i+k][j+k] == player) {
+						count++;
+					} else if (board[i+k][j+k] != ' ') {
+						count = 0;
+						break;
+					}
+				}
+				if (count == target) {
+					playerCount++;
+				} else if (count > 0 && count < target) {
+					emptyCount++;
+				} else if (count == 0) {
+					count = 0;
+					for (int k = 0; k < target; k++) {
+						if (board[i+k][j+k] != player && board[i+k][j+k] != ' ') {
+							count++;
+						} else if (board[i+k][j+k] == player) {
+							count = 0;
+							break;
+						}
+					}
+					if (count == target) {
+						opponentCount++;
+					} else if (count > 0 && count < target) {
+						emptyCount++;
+					}
+				}
+			}
+		}
+
+		// Bottom-left to top-right diagonal
+		for (int i = target - 1; i < numRows; i++) {
+			for (int j = 0; j <= numCols - target; j++) {
+				int count = 0;
+				for (int k = 0; k < target; k++) {
+					if (board[i-k][j+k] == player) {
+						count++;
+					} else if (board[i-k][j+k] != ' ') {
+						count = 0;
+						break;
+					}
+				}
+				if (count == target) {
+					playerCount++;
+				} else if (count > 0 && count < target) {
+					emptyCount++;
+				} else if (count == 0) {
+					count = 0;
+					for (int k = 0; k < target; k++) {
+						if (board[i-k][j+k] != player && board[i-k][j+k] != ' ') {
+							count++;
+						} else if (board[i-k][j+k] == player) {
+							count = 0;
+							break;
+						}
+					}
+					if (count == target) {
+						opponentCount++;
+					} else if (count > 0 && count < target) {
+						emptyCount++;
+					}
+				}
+			}
+		}
+		int score = playerCount - opponentCount;
+		if (score > 0 && emptyCount ==  0) {
+			score += 100;
+		} else if (score < 0 && emptyCount == 0) {
+			score -= 100;
+		} else if (emptyCount > 0) {
+			score += emptyCount;
+		}
+		return score;
+	}
 	////////////////////
 	// POST API CALLS //
 	////////////////////
