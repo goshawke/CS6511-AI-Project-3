@@ -28,7 +28,7 @@ public class Game {
     private final int TIMER = 150; // Each step in 180 seconds (Make sure searching would not exceed the time limit)
     
     //my code
-    private final int TEAM_ID = 1356;
+    private final int TEAM_ID =1356;
     // my code
 
 
@@ -376,6 +376,7 @@ public class Game {
         return false;
     }
 
+    
     /**
      * Get point (x, y) on board
      * @param x
