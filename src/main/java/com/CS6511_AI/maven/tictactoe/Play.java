@@ -48,22 +48,8 @@ public class Play {
      * @throws Exception
      */
     public static int createGame(String opponentTeamId, int boardSize, int target, int priority) throws Exception {
-        // Requests requests = new Requests();
-        // HashMap<String, String> params = new HashMap<String, String>();
-        // params.put("type", "game");
-        // if (priority == 1) {
-        //     // Move first
-        //     params.put("teamId1", "1356");
-        //     params.put("teamId2", opponentTeamId);
-        // } else if (priority == 2) {
-        //     // Move second
-        //     params.put("teamId1", opponentTeamId);
-        //     params.put("teamId2", "1356");
-        // }
 
-        // my code
-
-        int myTeamId = 1356;
+        int myTeamId = 1355;
 
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("type", "game");
@@ -86,20 +72,5 @@ public class Play {
         } else {
             return result; // result should be the gameId
         }
-        // ^^ my code ^^
-
-
-        // params.put("gameType", "TTT");
-        // params.put("boardSize", Integer.toString(boardSize));
-        // params.put("target", Integer.toString(target));
-        // String result = requests.post(params);
-
-        // JSONObject parsedResult = JSON.parseObject(result);
-        // if (!parsedResult.getString("code").equals("OK")) {
-        //     throw new Exception("ERROR in game creation: " + result);
-        // } else {
-        //     System.out.println("New game " + Integer.toString(parsedResult.getInteger("gameId")));
-        //     return parsedResult.getInteger("gameId");
-        // }
     }
 }
