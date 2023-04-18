@@ -24,11 +24,14 @@ import java.util.Map;
 
 
 public class Game {
-    private final static int MAX_DEPTH = 3;
+
+    // this can be changed if we have memory errors
+    private final static int MAX_DEPTH = 2;
+
     private final int TIMER = 150; // Each step in 180 seconds (Make sure searching would not exceed the time limit)
     
     //my code
-    private final int TEAM_ID = 1355;
+    private final int TEAM_ID = 1387;
     // my code
 
 
@@ -134,7 +137,9 @@ public class Game {
         int count = 1;
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, String> keyValuePairs = objectMapper.readValue(result, HashMap.class);
-        System.out.println(result);
+        
+        // testing
+        //System.out.println(result);
 
         if(result.contains("{"))
         {
@@ -144,7 +149,8 @@ public class Game {
                 String[] xy = key.split(",");
                 int x = Integer.parseInt(xy[0]), y = Integer.parseInt(xy[1]);
                 this.updateBoard(x, y, value);
-                System.out.println("Key: " + key + ", Value: " + value);
+                // testing
+                // System.out.println("Key: " + key + ", Value: " + value);
                 count++;
             }
         }
