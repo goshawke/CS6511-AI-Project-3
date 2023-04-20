@@ -382,6 +382,7 @@ public class Game {
         return false;
     }
 
+    
     /**
      * Get point (x, y) on board
      * @param x
