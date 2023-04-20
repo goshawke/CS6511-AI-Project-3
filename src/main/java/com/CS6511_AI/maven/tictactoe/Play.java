@@ -63,7 +63,7 @@ public class Play {
 
         // my code
 
-        int myTeamId = 1356;
+        int myTeamId = 1387;
 
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("type", "game");
